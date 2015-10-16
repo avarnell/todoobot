@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h1= title
+
+  div(class='container' id='tasks')
+    h1(class="ui-widget-header") Tasks
+    div(id='accordion' class="ui-widget-content")
+      h3 Health
+      div
+        ul
+          for task in health
+            li=task.task
+      h3 Wealth
+      div
+        ul
+          for task in wealth
+            li=task.task
+      h3 Soul
+      div
+        ul
+          for task in soul
+            li=task.task
+    div
+
+      h2 Add a new task
+      form(action='/addtask' method='post')
+        label(for='catagory') Catagory 
+        select(name='catagory' id='catagory')
+          option health
+          option wealth
+          option soul
+        label(for='task') Task  
+        input(type='text' id='task' name='task')
+        input(type='submit' value='add task')
+
+
+
+  div(class='container' id='todo')
+    h1(class="ui-widget-header") Daily Plan
+    div(class='ui-widget-content')
+      ol
+        li(class='placeholder') Drag items here!
+    div
+      h2 Save today's plan
+
+
+  
